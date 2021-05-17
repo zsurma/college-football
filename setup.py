@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="college-football",
-    version="0.0.1",
+    version="0.0.5",
     author="Zoe Surma",
     author_email="zdawg1022@gmail.com",
     description="A college football analysis package",

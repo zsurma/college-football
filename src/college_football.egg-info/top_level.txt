@@ -1,1 +1,1 @@
-college-football
+college_football
