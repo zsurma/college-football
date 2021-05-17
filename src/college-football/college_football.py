@@ -7,6 +7,12 @@ from bs4 import BeautifulSoup
 from bs4 import Comment
 
 class Player:
+    '''Player class to obtain statistics for college football athletes.
+    
+    This class utilizes Sports Reference's CFB site to pull applicable pandas
+    data frames. In order to create an instance, the player's first name,
+    last name, team name, and years played should be included.
+    '''
     def __init__(self, first_name, last_name, team, years):
         self.first_name = first_name
         self.last_name = last_name
@@ -76,6 +82,12 @@ class Player:
 
 
     def get_passing_summary(self):
+        '''Get passing statistics for the player.
+
+        This method will return a pandas data frame created with the passing
+        table on the site. If no passing statistics are available, the method
+        will raise an error.
+        '''
         if self.passing_summary is None:
             r = requests.get(f'http://www.sports-reference.com{self.player_url}')
             soup = BeautifulSoup(r.text, 'lxml')
@@ -94,6 +106,12 @@ class Player:
 
 
     def get_rushing_receiving_summary(self):
+        '''Get rushing/receiving statistics for the player.
+
+        This method will return a pandas data frame created with the rushing/
+        receiving table on the site. If no rushing/receiving statistics are
+        available, the method will raise an error.
+        '''
         if self.rushing_receiving_summary is None:
             r = requests.get(f'http://www.sports-reference.com{self.player_url}')
             soup = BeautifulSoup(r.text, 'lxml')
@@ -112,6 +130,12 @@ class Player:
 
 
     def get_punting_kicking_summary(self):
+        '''Get punting/kicking statistics for the player.
+
+        This method will return a pandas data frame created with the punting/
+        kicking table on the site. If no punting/kicking statistics are 
+        available, the method will raise an error.
+        '''
         if self.punting_kicking_summary is None:
             r = requests.get(f'http://www.sports-reference.com{self.player_url}')
             soup = BeautifulSoup(r.text, 'lxml')
@@ -130,6 +154,12 @@ class Player:
 
 
     def get_return_summary(self):
+        '''Get return statistics for the player.
+
+        This method will return a pandas data frame created with the return 
+        table on the site. If no return statistics are available, the method
+        will raise an error.
+        '''
         if self.return_summary is None:
             r = requests.get(f'http://www.sports-reference.com{self.player_url}')
             soup = BeautifulSoup(r.text, 'lxml')
@@ -148,6 +178,12 @@ class Player:
 
 
     def get_defense_summary(self):
+        '''Get defensive statistics for the player.
+
+        This method will return a pandas data frame created with the defense 
+        table on the site. If no defensive statistics are available, the method
+        will raise an error.
+        '''
         if self.defense_summary is None:
             r = requests.get(f'http://www.sports-reference.com{self.player_url}')
             soup = BeautifulSoup(r.text, 'lxml')
@@ -166,6 +202,12 @@ class Player:
 
 
     def get_scoring_summary(self):
+        '''Get scoring statistics for the player.
+
+        This method will return a pandas data frame created with the scoring
+        table on the site. If no scoring statistics are available, the method
+        will raise an error.
+        '''
         if self.scoring_summary is None:
             r = requests.get(f'http://www.sports-reference.com{self.player_url}')
             soup = BeautifulSoup(r.text, 'lxml')
@@ -183,6 +225,12 @@ class Player:
         return self.scoring_summary
 
     def get_game_logs(self, year):
+        '''Get game logs for a given year.
+
+        This method will return a pandas data frame with specific game
+        information for the given year. If the year is not within the player's
+        career range, it will raise an error.
+        '''
         year_range = []
         split_years = self.years.split('-')
         if len(split_years) > 1:
@@ -198,6 +246,12 @@ class Player:
 
 
     def get_splits(self, year):
+        '''Get season splits for a given year.
+
+        This method will return a pandas data frame with season split
+        information for the given year. If the year is not within the player's
+        career range, it will raise an error.
+        '''
         year_range = []
         split_years = self.years.split('-')
         if len(split_years) > 1:
@@ -213,6 +267,8 @@ class Player:
 
 
 if __name__ == '__main__':
+    # example is Julian Edelman, incorrect team and years chosen to
+    # showcase flexibility in search
     p = Player('Julian', 'Edelman', 'Ohio State', '2018-2020')
     print(p.player_url)
     print(p.last_name)

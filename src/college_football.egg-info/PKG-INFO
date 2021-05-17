@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: college-football
+Version: 0.0.1
+Summary: A college football analysis package
+Home-page: https://github.com/zsurma/college-football
+Author: Zoe Surma
+Author-email: zdawg1022@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/zsurma/college-football/issues
+Description: # college-football
+        
+        Python package to interact with college football player statistics.
+        
+        `college-football` pulls data from [Sports Reference's college football site](https://www.sports-reference.com/cfb). This package is intended for interactive use in formats like Jupyter notebooks - an example is included in the `examples` directory.
+        
+        The current version of the package only works with individual statistics, not overall team information. This functionality may be added in future versions.
+        
+        Please be considerate when using this package to pull data, do not overwhelm Sports Reference's servers with quick requests.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
